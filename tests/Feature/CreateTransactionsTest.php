@@ -11,11 +11,10 @@ class CreateTransactionsTest extends TestCase
 
 	function test_an_authenticated_user_can_create_new_transaction_record()
     {
-        $this->actingAs(factory('App\User')->create());
+        //$this->actingAs(factory('App\User')->create());
         //$this->signIn();
-        $transaction = factory('App\Transaction')->make();
-        //dd($transaction->toArray());
-
+        $transaction = factory('App\Transaction')->make( ['user_id' => 1, 'symbol_id' => 1 ]);
+        dd($transaction->toArray());
         $response = $this->post('/', $transaction->toArray());
         //dd($response);
         // $this->get($response->headers->get('Location'))

@@ -26,11 +26,11 @@
                 {{-- @if (auth()->check()) --}}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Channels <span class="caret"></span></a>
+                           aria-expanded="false">Symbols<span class="caret"></span></a>
 
                         <ul class="dropdown-menu">
                             @foreach (\App\Symbol::all() as $symbol)
-                                <li><a href="/{{ $symbol->symbol }}">{{ $symbol->name }}</a></li>
+                                <li><a href="/{{ $symbol->symbol }}">{{ $symbol->symbol }} {{ $symbol->name }}</a></li>
                             @endforeach
                         </ul>
                     </li>

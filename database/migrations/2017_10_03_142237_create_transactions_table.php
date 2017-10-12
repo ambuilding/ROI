@@ -21,10 +21,10 @@ class CreateTransactionsTable extends Migration
             $table->enum('transaction', ['BUY', 'SELL', 'HLI', 'HGU']);
             $table->integer('shares');
             $table->decimal('amount', 65, 4);
-            $table->decimal('price', 9, 4);
-            $table->integer('total');
-            $table->decimal('sum', 65, 4);
-            $table->decimal('cost', 9, 4);
+            $table->decimal('price', 9, 4)->nullable();
+            $table->integer('totalShares')->nullable();
+            $table->decimal('totalAmount', 65, 4)->nullable();
+            $table->decimal('cost', 9, 4)->nullable();
         });
     }
 

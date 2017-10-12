@@ -34,9 +34,6 @@ $factory->define(App\Symbol::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
-	$sum = DB::table('transactions')->where('symbol_id', 1)->sum('amount') + 106;
-    $total = DB::table('transactions')->where('symbol_id', 1)->sum('shares') + 100;
-    $cost = $sum / $total;
 	//$faker->randomFloat($nbMaxDecimals = 4, $min = 10000, $max = 10000000000);
 
 	return [
@@ -50,9 +47,5 @@ $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
         'transaction'  => $faker->randomElement(['BUY' ,'SELL', 'HLI', 'HGU']),
         'shares' => 100,
         'amount' => 106,
-        'price' => 106 / 100,
-        'total' => $total,
-        'sum' => $sum,
-        'cost' => $cost,
     ];
 });

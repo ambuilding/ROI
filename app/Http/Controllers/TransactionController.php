@@ -31,15 +31,8 @@ class TransactionController extends Controller
 		return view('transactions.create');
 	}
 
-	public function store(Request $request)
+	public function store()
 	{
-		$price = request('shares') ? request('amount') / request('shares') : 0;
-		//dd($price);
-
-		$sum = DB::table('transactions')->where('symbol_id', request('symbol_id'))->sum('amount') + request('amount');
-		$total = DB::table('transactions')->where('symbol_id', request('symbol_id'))->sum('shares') + request('shares');
-		$cost = $sum / $total;
-
 		$transaction = Transaction::create([
             'user_id' => auth()->id(),
             'symbol_id' => request('symbol_id'),
@@ -47,10 +40,6 @@ class TransactionController extends Controller
             'transaction' => request('transaction'),
             'shares' => request('shares'),
             'amount' => request('amount'),
-            'price' => $price,
-            'total' => $total,
-            'sum' => $sum,
-            'cost' => $cost
         ]);
 
 		return redirect('/');

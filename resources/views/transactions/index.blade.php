@@ -28,8 +28,8 @@
                                 <td>{{ $transaction->shares }}</td>
                                 <td>{{ $transaction->amount }}</td>
                                 <td>{{ $transaction->price }}</td>
-                                <td>{{ $transaction->total }}</td>
-                                <td>{{ $transaction->sum }}</td>
+                                <td>{{ $transaction->totalShares }}</td>
+                                <td>{{ $transaction->totalAmount }}</td>
                                 <td>{{ $transaction->cost }}</td>
                             </tr>
                         @empty
