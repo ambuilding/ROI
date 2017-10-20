@@ -19,7 +19,7 @@ class TransactionController extends Controller
 		if ($symbol->exists) {
 	        $transactions = $symbol->transactions()->get();
 	    } else {
-	        $transactions = Transaction::all();
+	        $transactions = Transaction::get()->groupBy('symbol_id');
 	    }
 		//dd($transactions->toSql());
 		//return $transactions;

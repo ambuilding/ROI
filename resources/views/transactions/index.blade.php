@@ -20,18 +20,21 @@
                     </thead>
 
                     <tbody>
-                        @forelse ($transactions as $transaction)
-                            <tr>
-                                <td>{{ $transaction->transaction }}</td>
-                                <td>{{ $transaction->dateTime }}</td>
-                                <td>{{ $transaction->symbol->symbol }}</td>
-                                <td>{{ $transaction->shares }}</td>
-                                <td>{{ $transaction->amount }}</td>
-                                <td>{{ $transaction->price }}</td>
-                                <td>{{ $transaction->totalShares }}</td>
-                                <td>{{ $transaction->totalAmount }}</td>
-                                <td>{{ $transaction->cost }}</td>
-                            </tr>
+                        @forelse ($transactions as $symbol => $transaction)
+                            <td>{{ $symbol }}</td>
+                            @foreach ($transaction as $transaction)
+                                <tr>
+                                    <td>{{ $transaction->transaction }}</td>
+                                    <td>{{ $transaction->dateTime }}</td>
+                                    <td>{{ $transaction->symbol->symbol }}</td>
+                                    <td>{{ $transaction->shares }}</td>
+                                    <td>{{ $transaction->amount }}</td>
+                                    <td>{{ $transaction->price }}</td>
+                                    <td>{{ $transaction->totalShares }}</td>
+                                    <td>{{ $transaction->totalAmount }}</td>
+                                    <td>{{ $transaction->cost }}</td>
+                                </tr>
+                            @endforeach
                         @empty
                             <p class="text-center">You haven't recorded any transaction yet!</p>
                         @endforelse
